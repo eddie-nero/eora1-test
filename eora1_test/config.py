@@ -6,7 +6,7 @@ load_dotenv(override=True)
 BOT_TOKEN = os.environ.get('BOT_TOKEN')
 
 # webhook settings
-WEBHOOK_HOST: str = "https://7a35-176-59-172-114.eu.ngrok.io"
+WEBHOOK_HOST: str = "https://eora-test.onrender.com"
 WEBHOOK_PATH = f'/webhook/{BOT_TOKEN}'
 WEBHOOK_URL = f'{WEBHOOK_HOST}{WEBHOOK_PATH}'
 
