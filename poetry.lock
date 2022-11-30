@@ -37,6 +37,21 @@ yarl = ">=1.0,<2.0"
 speedups = ["Brotli", "aiodns", "cchardet"]
 
 [[package]]
+name = "aioredis"
+version = "2.0.1"
+description = "asyncio (PEP 3156) Redis support"
+category = "main"
+optional = false
+python-versions = ">=3.6"
+
+[package.dependencies]
+async-timeout = "*"
+typing-extensions = "*"
+
+[package.extras]
+hiredis = ["hiredis (>=1.0)"]
+
+[[package]]
 name = "aiosignal"
 version = "1.3.1"
 description = "aiosignal: a list of registered asynchronous callbacks"
@@ -54,6 +69,19 @@ description = "Timeout context manager for asyncio programs"
 category = "main"
 optional = false
 python-versions = ">=3.6"
+
+[[package]]
+name = "asyncpg"
+version = "0.27.0"
+description = "An asyncio PostgreSQL driver"
+category = "main"
+optional = false
+python-versions = ">=3.7.0"
+
+[package.extras]
+dev = ["Cython (>=0.29.24,<0.30.0)", "Sphinx (>=4.1.2,<4.2.0)", "flake8 (>=5.0.4,<5.1.0)", "pytest (>=6.0)", "sphinx-rtd-theme (>=0.5.2,<0.6.0)", "sphinxcontrib-asyncio (>=0.3.0,<0.4.0)", "uvloop (>=0.15.3)"]
+docs = ["Sphinx (>=4.1.2,<4.2.0)", "sphinx-rtd-theme (>=0.5.2,<0.6.0)", "sphinxcontrib-asyncio (>=0.3.0,<0.4.0)"]
+test = ["flake8 (>=5.0.4,<5.1.0)", "uvloop (>=0.15.3)"]
 
 [[package]]
 name = "attrs"
@@ -100,6 +128,14 @@ python-versions = ">=3.6.0"
 unicode-backport = ["unicodedata2"]
 
 [[package]]
+name = "colorama"
+version = "0.4.6"
+description = "Cross-platform colored terminal text."
+category = "main"
+optional = false
+python-versions = "!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*,!=3.4.*,!=3.5.*,!=3.6.*,>=2.7"
+
+[[package]]
 name = "frozenlist"
 version = "1.3.3"
 description = "A list-like structure which implements collections.abc.MutableSequence"
@@ -116,6 +152,21 @@ optional = false
 python-versions = ">=3.5"
 
 [[package]]
+name = "loguru"
+version = "0.6.0"
+description = "Python logging made (stupidly) simple"
+category = "main"
+optional = false
+python-versions = ">=3.5"
+
+[package.dependencies]
+colorama = {version = ">=0.3.4", markers = "sys_platform == \"win32\""}
+win32-setctime = {version = ">=1.0.0", markers = "sys_platform == \"win32\""}
+
+[package.extras]
+dev = ["Sphinx (>=4.1.1)", "black (>=19.10b0)", "colorama (>=0.3.4)", "docutils (==0.16)", "flake8 (>=3.7.7)", "isort (>=5.1.1)", "pytest (>=4.6.2)", "pytest-cov (>=2.7.1)", "sphinx-autobuild (>=0.7.1)", "sphinx-rtd-theme (>=0.4.3)", "tox (>=3.9.0)"]
+
+[[package]]
 name = "magic-filter"
 version = "1.0.9"
 description = "This package provides magic filter based on dynamic attribute getter"
@@ -130,6 +181,14 @@ description = "multidict implementation"
 category = "main"
 optional = false
 python-versions = ">=3.7"
+
+[[package]]
+name = "nest-asyncio"
+version = "1.5.6"
+description = "Patch asyncio to allow nested event loops"
+category = "main"
+optional = false
+python-versions = ">=3.5"
 
 [[package]]
 name = "pydantic"
@@ -166,12 +225,34 @@ optional = false
 python-versions = "*"
 
 [[package]]
+name = "tenacity"
+version = "8.1.0"
+description = "Retry code until it succeeds"
+category = "main"
+optional = false
+python-versions = ">=3.6"
+
+[package.extras]
+doc = ["reno", "sphinx", "tornado (>=4.5)"]
+
+[[package]]
 name = "typing-extensions"
 version = "4.4.0"
 description = "Backported and Experimental Type Hints for Python 3.7+"
 category = "main"
 optional = false
 python-versions = ">=3.7"
+
+[[package]]
+name = "win32-setctime"
+version = "1.1.0"
+description = "A small Python utility to set file creation time on Windows"
+category = "main"
+optional = false
+python-versions = ">=3.5"
+
+[package.extras]
+dev = ["black (>=19.3b0)", "pytest (>=4.6.2)"]
 
 [[package]]
 name = "yarl"
@@ -188,7 +269,7 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.10"
-content-hash = "3239d67e390377cbaf7df8e149b33747578c528184373b9720fd50dfb330f490"
+content-hash = "96965a984af4320611080894ace60fb4ff5ec6f30150ee941f6dbe9f3a679aa5"
 
 [metadata.files]
 aiogram = [
@@ -284,6 +365,10 @@ aiohttp = [
     {file = "aiohttp-3.8.3-cp39-cp39-win_amd64.whl", hash = "sha256:88e5be56c231981428f4f506c68b6a46fa25c4123a2e86d156c58a8369d31ab7"},
     {file = "aiohttp-3.8.3.tar.gz", hash = "sha256:3828fb41b7203176b82fe5d699e0d845435f2374750a44b480ea6b930f6be269"},
 ]
+aioredis = [
+    {file = "aioredis-2.0.1-py3-none-any.whl", hash = "sha256:9ac0d0b3b485d293b8ca1987e6de8658d7dafcca1cddfcd1d506cae8cdebfdd6"},
+    {file = "aioredis-2.0.1.tar.gz", hash = "sha256:eaa51aaf993f2d71f54b70527c440437ba65340588afeb786cd87c55c89cd98e"},
+]
 aiosignal = [
     {file = "aiosignal-1.3.1-py3-none-any.whl", hash = "sha256:f8376fb07dd1e86a584e4fcdec80b36b7f81aac666ebc724e2c090300dd83b17"},
     {file = "aiosignal-1.3.1.tar.gz", hash = "sha256:54cd96e15e1649b75d6c87526a6ff0b6c1b0dd3459f43d9ca11d48c339b68cfc"},
@@ -291,6 +376,44 @@ aiosignal = [
 async-timeout = [
     {file = "async-timeout-4.0.2.tar.gz", hash = "sha256:2163e1640ddb52b7a8c80d0a67a08587e5d245cc9c553a74a847056bc2976b15"},
     {file = "async_timeout-4.0.2-py3-none-any.whl", hash = "sha256:8ca1e4fcf50d07413d66d1a5e416e42cfdf5851c981d679a09851a6853383b3c"},
+]
+asyncpg = [
+    {file = "asyncpg-0.27.0-cp310-cp310-macosx_10_9_x86_64.whl", hash = "sha256:fca608d199ffed4903dce1bcd97ad0fe8260f405c1c225bdf0002709132171c2"},
+    {file = "asyncpg-0.27.0-cp310-cp310-macosx_11_0_arm64.whl", hash = "sha256:20b596d8d074f6f695c13ffb8646d0b6bb1ab570ba7b0cfd349b921ff03cfc1e"},
+    {file = "asyncpg-0.27.0-cp310-cp310-manylinux_2_17_aarch64.manylinux2014_aarch64.manylinux_2_28_aarch64.whl", hash = "sha256:7a6206210c869ebd3f4eb9e89bea132aefb56ff3d1b7dd7e26b102b17e27bbb1"},
+    {file = "asyncpg-0.27.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:a7a94c03386bb95456b12c66026b3a87d1b965f0f1e5733c36e7229f8f137747"},
+    {file = "asyncpg-0.27.0-cp310-cp310-musllinux_1_1_aarch64.whl", hash = "sha256:bfc3980b4ba6f97138b04f0d32e8af21d6c9fa1f8e6e140c07d15690a0a99279"},
+    {file = "asyncpg-0.27.0-cp310-cp310-musllinux_1_1_x86_64.whl", hash = "sha256:9654085f2b22f66952124de13a8071b54453ff972c25c59b5ce1173a4283ffd9"},
+    {file = "asyncpg-0.27.0-cp310-cp310-win32.whl", hash = "sha256:879c29a75969eb2722f94443752f4720d560d1e748474de54ae8dd230bc4956b"},
+    {file = "asyncpg-0.27.0-cp310-cp310-win_amd64.whl", hash = "sha256:ab0f21c4818d46a60ca789ebc92327d6d874d3b7ccff3963f7af0a21dc6cff52"},
+    {file = "asyncpg-0.27.0-cp311-cp311-macosx_10_9_x86_64.whl", hash = "sha256:18f77e8e71e826ba2d0c3ba6764930776719ae2b225ca07e014590545928b576"},
+    {file = "asyncpg-0.27.0-cp311-cp311-macosx_11_0_arm64.whl", hash = "sha256:c2232d4625c558f2aa001942cac1d7952aa9f0dbfc212f63bc754277769e1ef2"},
+    {file = "asyncpg-0.27.0-cp311-cp311-manylinux_2_17_aarch64.manylinux2014_aarch64.manylinux_2_28_aarch64.whl", hash = "sha256:9a3a4ff43702d39e3c97a8786314123d314e0f0e4dabc8367db5b665c93914de"},
+    {file = "asyncpg-0.27.0-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:ccddb9419ab4e1c48742457d0c0362dbdaeb9b28e6875115abfe319b29ee225d"},
+    {file = "asyncpg-0.27.0-cp311-cp311-musllinux_1_1_aarch64.whl", hash = "sha256:768e0e7c2898d40b16d4ef7a0b44e8150db3dd8995b4652aa1fe2902e92c7df8"},
+    {file = "asyncpg-0.27.0-cp311-cp311-musllinux_1_1_x86_64.whl", hash = "sha256:609054a1f47292a905582a1cfcca51a6f3f30ab9d822448693e66fdddde27920"},
+    {file = "asyncpg-0.27.0-cp311-cp311-win32.whl", hash = "sha256:8113e17cfe236dc2277ec844ba9b3d5312f61bd2fdae6d3ed1c1cdd75f6cf2d8"},
+    {file = "asyncpg-0.27.0-cp311-cp311-win_amd64.whl", hash = "sha256:bb71211414dd1eeb8d31ec529fe77cff04bf53efc783a5f6f0a32d84923f45cf"},
+    {file = "asyncpg-0.27.0-cp37-cp37m-manylinux_2_17_aarch64.manylinux2014_aarch64.manylinux_2_28_aarch64.whl", hash = "sha256:4750f5cf49ed48a6e49c6e5aed390eee367694636c2dcfaf4a273ca832c5c43c"},
+    {file = "asyncpg-0.27.0-cp37-cp37m-musllinux_1_1_aarch64.whl", hash = "sha256:eca01eb112a39d31cc4abb93a5aef2a81514c23f70956729f42fb83b11b3483f"},
+    {file = "asyncpg-0.27.0-cp37-cp37m-musllinux_1_1_x86_64.whl", hash = "sha256:5710cb0937f696ce303f5eed6d272e3f057339bb4139378ccecafa9ee923a71c"},
+    {file = "asyncpg-0.27.0-cp37-cp37m-win_amd64.whl", hash = "sha256:71cca80a056ebe19ec74b7117b09e650990c3ca535ac1c35234a96f65604192f"},
+    {file = "asyncpg-0.27.0-cp38-cp38-macosx_11_0_arm64.whl", hash = "sha256:4bb366ae34af5b5cabc3ac6a5347dfb6013af38c68af8452f27968d49085ecc0"},
+    {file = "asyncpg-0.27.0-cp38-cp38-manylinux_2_17_aarch64.manylinux2014_aarch64.manylinux_2_28_aarch64.whl", hash = "sha256:16ba8ec2e85d586b4a12bcd03e8d29e3d99e832764d6a1d0b8c27dbbe4a2569d"},
+    {file = "asyncpg-0.27.0-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:d20dea7b83651d93b1eb2f353511fe7fd554752844523f17ad30115d8b9c8cd6"},
+    {file = "asyncpg-0.27.0-cp38-cp38-musllinux_1_1_aarch64.whl", hash = "sha256:e56ac8a8237ad4adec97c0cd4728596885f908053ab725e22900b5902e7f8e69"},
+    {file = "asyncpg-0.27.0-cp38-cp38-musllinux_1_1_x86_64.whl", hash = "sha256:bf21ebf023ec67335258e0f3d3ad7b91bb9507985ba2b2206346de488267cad0"},
+    {file = "asyncpg-0.27.0-cp38-cp38-win32.whl", hash = "sha256:69aa1b443a182b13a17ff926ed6627af2d98f62f2fe5890583270cc4073f63bf"},
+    {file = "asyncpg-0.27.0-cp38-cp38-win_amd64.whl", hash = "sha256:62932f29cf2433988fcd799770ec64b374a3691e7902ecf85da14d5e0854d1ea"},
+    {file = "asyncpg-0.27.0-cp39-cp39-macosx_10_9_x86_64.whl", hash = "sha256:fddcacf695581a8d856654bc4c8cfb73d5c9df26d5f55201722d3e6a699e9629"},
+    {file = "asyncpg-0.27.0-cp39-cp39-macosx_11_0_arm64.whl", hash = "sha256:7d8585707ecc6661d07367d444bbaa846b4e095d84451340da8df55a3757e152"},
+    {file = "asyncpg-0.27.0-cp39-cp39-manylinux_2_17_aarch64.manylinux2014_aarch64.manylinux_2_28_aarch64.whl", hash = "sha256:975a320baf7020339a67315284a4d3bf7460e664e484672bd3e71dbd881bc692"},
+    {file = "asyncpg-0.27.0-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:2232ebae9796d4600a7819fc383da78ab51b32a092795f4555575fc934c1c89d"},
+    {file = "asyncpg-0.27.0-cp39-cp39-musllinux_1_1_aarch64.whl", hash = "sha256:88b62164738239f62f4af92567b846a8ef7cf8abf53eddd83650603de4d52163"},
+    {file = "asyncpg-0.27.0-cp39-cp39-musllinux_1_1_x86_64.whl", hash = "sha256:eb4b2fdf88af4fb1cc569781a8f933d2a73ee82cd720e0cb4edabbaecf2a905b"},
+    {file = "asyncpg-0.27.0-cp39-cp39-win32.whl", hash = "sha256:8934577e1ed13f7d2d9cea3cc016cc6f95c19faedea2c2b56a6f94f257cea672"},
+    {file = "asyncpg-0.27.0-cp39-cp39-win_amd64.whl", hash = "sha256:1b6499de06fe035cf2fa932ec5617ed3f37d4ebbf663b655922e105a484a6af9"},
+    {file = "asyncpg-0.27.0.tar.gz", hash = "sha256:720986d9a4705dd8a40fdf172036f5ae787225036a7eb46e704c45aa8f62c054"},
 ]
 attrs = [
     {file = "attrs-22.1.0-py2.py3-none-any.whl", hash = "sha256:86efa402f67bf2df34f51a335487cf46b1ec130d02b8d39fd248abfd30da551c"},
@@ -307,6 +430,10 @@ certifi = [
 charset-normalizer = [
     {file = "charset-normalizer-2.1.1.tar.gz", hash = "sha256:5a3d016c7c547f69d6f81fb0db9449ce888b418b5b9952cc5e6e66843e9dd845"},
     {file = "charset_normalizer-2.1.1-py3-none-any.whl", hash = "sha256:83e9a75d1911279afd89352c68b45348559d1fc0506b054b346651b5e7fee29f"},
+]
+colorama = [
+    {file = "colorama-0.4.6-py2.py3-none-any.whl", hash = "sha256:4f1d9991f5acc0ca119f9d443620b77f9d6b33703e51011c16baf57afb285fc6"},
+    {file = "colorama-0.4.6.tar.gz", hash = "sha256:08695f5cb7ed6e0531a20572697297273c47b8cae5a63ffc6d6ed5c201be6e44"},
 ]
 frozenlist = [
     {file = "frozenlist-1.3.3-cp310-cp310-macosx_10_9_universal2.whl", hash = "sha256:ff8bf625fe85e119553b5383ba0fb6aa3d0ec2ae980295aaefa552374926b3f4"},
@@ -388,6 +515,10 @@ idna = [
     {file = "idna-3.4-py3-none-any.whl", hash = "sha256:90b77e79eaa3eba6de819a0c442c0b4ceefc341a7a2ab77d7562bf49f425c5c2"},
     {file = "idna-3.4.tar.gz", hash = "sha256:814f528e8dead7d329833b91c5faa87d60bf71824cd12a7530b5526063d02cb4"},
 ]
+loguru = [
+    {file = "loguru-0.6.0-py3-none-any.whl", hash = "sha256:4e2414d534a2ab57573365b3e6d0234dfb1d84b68b7f3b948e6fb743860a77c3"},
+    {file = "loguru-0.6.0.tar.gz", hash = "sha256:066bd06758d0a513e9836fd9c6b5a75bfb3fd36841f4b996bc60b547a309d41c"},
+]
 magic-filter = [
     {file = "magic-filter-1.0.9.tar.gz", hash = "sha256:d0f1ffa5ff1fbe5105fd5f293c79b5d3795f336ea0f6129c636959a687bf422a"},
     {file = "magic_filter-1.0.9-py3-none-any.whl", hash = "sha256:51002312a8972fa514b998b7ff89340c98be3fc499967c1f5f2af98d13baf8d5"},
@@ -453,6 +584,10 @@ multidict = [
     {file = "multidict-6.0.2-cp39-cp39-win_amd64.whl", hash = "sha256:4bae31803d708f6f15fd98be6a6ac0b6958fcf68fda3c77a048a4f9073704aae"},
     {file = "multidict-6.0.2.tar.gz", hash = "sha256:5ff3bd75f38e4c43f1f470f2df7a4d430b821c4ce22be384e1459cb57d6bb013"},
 ]
+nest-asyncio = [
+    {file = "nest_asyncio-1.5.6-py3-none-any.whl", hash = "sha256:b9a953fb40dceaa587d109609098db21900182b16440652454a146cffb06e8b8"},
+    {file = "nest_asyncio-1.5.6.tar.gz", hash = "sha256:d267cc1ff794403f7df692964d1d2a3fa9418ffea2a3f6859a439ff482fef290"},
+]
 pydantic = [
     {file = "pydantic-1.10.2-cp310-cp310-macosx_10_9_x86_64.whl", hash = "sha256:bb6ad4489af1bac6955d38ebcb95079a836af31e4c4f74aba1ca05bb9f6027bd"},
     {file = "pydantic-1.10.2-cp310-cp310-macosx_11_0_arm64.whl", hash = "sha256:a1f5a63a6dfe19d719b1b6e6106561869d2efaca6167f84f5ab9347887d78b98"},
@@ -499,9 +634,17 @@ pytz = [
     {file = "pytz-2022.6-py2.py3-none-any.whl", hash = "sha256:222439474e9c98fced559f1709d89e6c9cbf8d79c794ff3eb9f8800064291427"},
     {file = "pytz-2022.6.tar.gz", hash = "sha256:e89512406b793ca39f5971bc999cc538ce125c0e51c27941bef4568b460095e2"},
 ]
+tenacity = [
+    {file = "tenacity-8.1.0-py3-none-any.whl", hash = "sha256:35525cd47f82830069f0d6b73f7eb83bc5b73ee2fff0437952cedf98b27653ac"},
+    {file = "tenacity-8.1.0.tar.gz", hash = "sha256:e48c437fdf9340f5666b92cd7990e96bc5fc955e1298baf4a907e3972067a445"},
+]
 typing-extensions = [
     {file = "typing_extensions-4.4.0-py3-none-any.whl", hash = "sha256:16fa4864408f655d35ec496218b85f79b3437c829e93320c7c9215ccfd92489e"},
     {file = "typing_extensions-4.4.0.tar.gz", hash = "sha256:1511434bb92bf8dd198c12b1cc812e800d4181cfcb867674e0f8279cc93087aa"},
+]
+win32-setctime = [
+    {file = "win32_setctime-1.1.0-py3-none-any.whl", hash = "sha256:231db239e959c2fe7eb1d7dc129f11172354f98361c4fa2d6d2d7e278baa8aad"},
+    {file = "win32_setctime-1.1.0.tar.gz", hash = "sha256:15cf5750465118d6929ae4de4eb46e8edae9a5634350c01ba582df868e932cb2"},
 ]
 yarl = [
     {file = "yarl-1.8.1-cp310-cp310-macosx_10_9_universal2.whl", hash = "sha256:abc06b97407868ef38f3d172762f4069323de52f2b70d133d096a48d72215d28"},

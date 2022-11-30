@@ -17,10 +17,11 @@ async def kitty_bread_start(message: types.Message, state: FSMContext):
 
 
 async def shape_chosen(message: types.Message, state: FSMContext):
-    if message.text.lower() not in (yes_variants | no_variants):
+    user_message = message.text.lower()
+    if user_message not in (yes_variants | no_variants):
         await message.answer("Пожалуйста, ответьте утвердительно или отрицательно.")
         return
-    if message.text.lower() in no_variants:
+    if user_message in no_variants:
         await message.answer("Это кот, а не хлеб! Не ешь его!")
         await state.finish()
         return

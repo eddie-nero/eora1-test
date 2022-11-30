@@ -1,33 +1,22 @@
 import logging
 
+import nest_asyncio
 from aiogram import Bot
-from aiogram.contrib.fsm_storage.memory import MemoryStorage
-from aiogram.contrib.middlewares.logging import LoggingMiddleware
-from aiogram.dispatcher import Dispatcher
 from aiogram.types import BotCommand
 from aiogram.utils.executor import set_webhook
-from aiohttp import web
 
 from eora1_test import config
-from eora1_test.handlers.common import register_handlers_common
-from eora1_test.handlers.start import register_handlers_kitty_bread
-
-bot = Bot(token=config.BOT_TOKEN)
-storage = MemoryStorage()
-dp = Dispatcher(bot, storage=storage)
-dp.middleware.setup(LoggingMiddleware())
-
-
-async def handle(request):
-    name = request.match_info.get('name', "Anonymous")
-    text = "Hello, " + name
-    return web.Response(text=text)
+from eora1_test.api.routes import setup_routes
+from eora1_test.handlers import register_handlers
+from eora1_test.loader import bot, dp, app, db, loop
+from eora1_test.middlewares import setup_middlewares
 
 
 async def set_commands(bot: Bot):
     commands = [
         BotCommand(command="/start", description="Начать диалог"),
         BotCommand(command="/cancel", description="Отменить текущее действие"),
+        BotCommand(command="/history", description="История ответов"),
     ]
     await bot.set_my_commands(commands)
 
@@ -35,6 +24,7 @@ async def set_commands(bot: Bot):
 async def on_startup(dispatcher):
     await bot.set_webhook(config.WEBHOOK_URL, drop_pending_updates=True)
     await set_commands(bot)
+    await db.create_tables()
 
 
 async def on_shutdown(dispatcher):
@@ -45,14 +35,11 @@ async def on_shutdown(dispatcher):
 
 if __name__ == '__main__':
     logging.basicConfig(level=logging.INFO)
-    
-    register_handlers_common(dp)
-    register_handlers_kitty_bread(dp)
-    
-    app = web.Application()
-    app.add_routes([web.get('/', handle),
-                    web.get('/{name}', handle)])
-    
+    nest_asyncio.apply()
+    setup_middlewares(dp)
+    register_handlers(dp)
+    setup_routes(app)
+
     executor = set_webhook(
         dispatcher=dp,
         webhook_path=config.WEBHOOK_PATH,
@@ -64,4 +51,5 @@ if __name__ == '__main__':
     executor.run_app(
         host=config.WEBAPP_HOST,
         port=config.WEBAPP_PORT,
+        loop=loop,
     )
