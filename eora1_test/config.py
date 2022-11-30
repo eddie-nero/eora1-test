@@ -11,7 +11,7 @@ WEBHOOK_PATH = f'/webhook/{BOT_TOKEN}'
 WEBHOOK_URL = f'{WEBHOOK_HOST}{WEBHOOK_PATH}'
 
 # webserver settings
-WEBAPP_HOST: str = '0.0.0.0'
+WEBAPP_HOST: str = 'localhost'
 WEBAPP_PORT: str = '80'
 
 # database settings
