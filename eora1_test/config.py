@@ -1,7 +1,7 @@
 import os
 from dotenv import load_dotenv
 
-load_dotenv(override=True)
+# load_dotenv(override=True)
 
 BOT_TOKEN = os.environ.get('BOT_TOKEN')
 
@@ -11,8 +11,8 @@ WEBHOOK_PATH = f'/webhook/{BOT_TOKEN}'
 WEBHOOK_URL = f'{WEBHOOK_HOST}{WEBHOOK_PATH}'
 
 # webserver settings
-WEBAPP_HOST: str = 'localhost'
-WEBAPP_PORT: str = '80'
+WEBAPP_HOST: str = '0.0.0.0'
+WEBAPP_PORT: str = '5000'
 
 # database settings
 POSTGRES_USER: str = os.environ.get('POSTGRES_USER', 'postgres')
