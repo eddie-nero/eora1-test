@@ -12,7 +12,7 @@ WEBHOOK_URL = f'{WEBHOOK_HOST}{WEBHOOK_PATH}'
 
 # webserver settings
 WEBAPP_HOST: str = 'localhost'
-WEBAPP_PORT: str = '5000'
+WEBAPP_PORT: str = '80'
 
 # database settings
 POSTGRES_USER: str = os.environ.get('POSTGRES_USER', 'postgres')
