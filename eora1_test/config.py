@@ -23,7 +23,7 @@ POSTGRES_PORT: int = int(os.environ.get('POSTGRES_PORT', 9999))
 
 # redis settings
 REDIS_USER: str = os.environ.get('REDIS_USER')
-REDIS_PASSWORD: str = os.environ.get('REDIS_PASSWORD')
+REDIS_PASSWORD: str = os.environ.get('REDIS_PASSWORD', None)
 REDIS_HOST: str = os.environ.get("REDIS_HOST", default="localhost")
 REDIS_PORT: int = int(os.environ.get("REDIS_PORT", default=6379))
 REDIS_DB_FSM: int = int(os.environ.get("REDIS_DB_FSM", default=0))

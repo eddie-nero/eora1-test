@@ -63,7 +63,7 @@ async def wait_redis():
     after=after_log,
 )
 async def wait_postgres():
-    version = await db.pool.execute("SELECT version();")
+    version = await db.pool.fetchval("SELECT version();")
     logger.info("Connected to {postgres}", postgres=version)
 
 

@@ -10,7 +10,7 @@ from eora1_test.db_api.db import Database
 
 bot = Bot(token=config.BOT_TOKEN)
 storage = RedisStorage2(
-    password=config.REDIS_PASSWORD,
+    password=config.REDIS_PASSWORD if config.REDIS_PASSWORD else None,
     host=config.REDIS_HOST,
     port=config.REDIS_PORT,
     db=config.REDIS_DB_FSM,
