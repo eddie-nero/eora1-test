@@ -41,7 +41,13 @@ def after_log(retry_state):
     after=after_log,
 )
 async def wait_redis():
-    connector = BaseRedis(host=config.REDIS_HOST, port=config.REDIS_PORT, db=0)
+    connector = BaseRedis(
+        user=config.REDIS_USER,
+        password=config.REDIS_PASSWORD,
+        host=config.REDIS_HOST,
+        port=config.REDIS_PORT,
+        db=0,
+    )
     try:
         await connector.connect()
         info = await connector.redis.info()

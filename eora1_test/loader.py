@@ -9,7 +9,12 @@ from eora1_test import config
 from eora1_test.db_api.db import Database
 
 bot = Bot(token=config.BOT_TOKEN)
-storage = RedisStorage2(host=config.REDIS_HOST, port=config.REDIS_PORT, db=config.REDIS_DB_FSM)
+storage = RedisStorage2(
+    password=config.REDIS_PASSWORD,
+    host=config.REDIS_HOST,
+    port=config.REDIS_PORT,
+    db=config.REDIS_DB_FSM,
+)
 # storage = MemoryStorage()
 dp = Dispatcher(bot, storage=storage)
 app = web.Application()
