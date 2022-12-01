@@ -25,15 +25,6 @@ class Database:
         result = await self.pool.fetch(sql)
         return [val.get('msg') for val in result]
     
-    async def start_conversation(self, telegram_id):
-        sql = "INSERT INTO conversations (telegram_id) VALUES ($1)"
-        async with self.pool.acquire() as connection:
-            async with connection.transaction():
-                try:
-                    await connection.execute(sql, telegram_id)
-                except Exception as e:
-                    print(e)
-
     async def _create_table_messages(self):
         sql = """
         CREATE TABLE IF NOT EXISTS messages (
@@ -46,20 +37,5 @@ class Database:
             async with connection.transaction():
                 await connection.execute(sql)
 
-    async def _create_table_conversations(self):
-        sql = """
-        CREATE TABLE IF NOT EXISTS conversations (
-        id SERIAL PRIMARY KEY,
-        telegram_id INTEGER NOT NULL,
-        is_shape_square BOOL,
-        is_have_ears BOOL,
-        started_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
-        updated_at TIMESTAMPTZ)
-        """
-        async with self.pool.acquire() as connection:
-            async with connection.transaction():
-                await connection.execute(sql)
-
     async def create_tables(self):
         await self._create_table_messages()
-        await self._create_table_conversations()

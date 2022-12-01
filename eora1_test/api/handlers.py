@@ -1,5 +1,4 @@
 from aiohttp import web
-from eora1_test.loader import db
 
 
 async def welcome(request):
@@ -10,5 +9,4 @@ async def welcome(request):
 async def start_bot(request):
     user = request.match_info.get('user_id')
     # msg = await request.text()
-    await db.start_conversation(user)
     return web.Response(text=f'Привет! Я помогу отличить кота от хлеба! Объект перед тобой квадратный?')
